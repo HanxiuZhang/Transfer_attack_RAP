@@ -505,8 +505,8 @@ logging(str(pos[:, 19]))
 logging("results for 300 iters:")
 logging(str(pos[:, 29]))
 
-logging("results for 400 iters:")
-logging(str(pos[:, 39]))
+# logging("results for 400 iters:")
+# logging(str(pos[:, 39]))
 
 
 if arg.save:
