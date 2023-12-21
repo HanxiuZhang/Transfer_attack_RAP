@@ -20,22 +20,21 @@ In NeurIPS 2022.
 - targeted attack with DI and logit loss from ResNet-50
 
     ```
-
-    python /targeted_attack/rap_attack.py --num_data_augmentation 1  --targeted  --transpoint 400 --seed 9018 --source_model resnet_50 --loss_function MaxLogit --DI --max_iterations 300
+    python rap_attack.py --targeted  --transpoint 400 --seed 9018 --source_model resnet50 --loss_function MaxLogit --DI --max_iterations 300
     ```
 
 
 - RAP targeted attack with DI and logit loss from ResNet-50
 
     ```
-    python /targeted_attack/rap_attack.py --num_data_augmentation 1  --targeted  --transpoint 0 --seed 9018 --source_model resnet_50 --loss_function MaxLogit --DI --max_iterations 300
+    python rap_attack.py --targeted  --transpoint 0 --seed 9018 --source_model resnet50 --loss_function MaxLogit --DI --max_iterations 300
     ```
 
 
 - RAP-LS targeted attack with DI and logit loss from ResNet-50
 
     ```
-    python /targeted_attack/rap_attack.py --num_data_augmentation 1  --targeted  --transpoint 100 --seed 9018 --source_model resnet_50 --loss_function MaxLogit --DI --max_iterations 300
+    python rap_attack.py --targeted  --transpoint 100 --seed 9018 --source_model resnet50 --loss_function MaxLogit --DI --max_iterations 300
     ```
 
 ### The parameters of config:

@@ -18,9 +18,11 @@ import scipy.stats as st
 ## hyperparameter
 parser = argparse.ArgumentParser()
 
+parser.add_argument('--file_path', type=str, default="./save/")
+
 parser.add_argument('--source_model', type=str, default='resnet50', choices=['resnet50', 'inception-v3', 'densenet121', 'vgg16bn'])
 
-parser.add_argument('--batch_size', type=int, default=50)
+parser.add_argument('--batch_size', type=int, default=16)
 parser.add_argument('--max_iterations', type=int, default=400)
 
 parser.add_argument('--loss_function', type=str, default='CE', choices=['CE','MaxLogit'])
@@ -112,7 +114,7 @@ else:
 
 if arg.save:
 
-    arg.file_path = "/targeted_attack/adv_example/"+exp_name
+    arg.file_path = "./save/"+exp_name
 
     makedir(arg.file_path)
 
@@ -283,13 +285,13 @@ np.random.seed(arg.seed)
 # from https://github.com/pytorch/examples/blob/master/imagenet/main.py
 norm = Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
 trn = transforms.Compose([transforms.ToTensor(), ])
-image_id_list, label_ori_list, label_tar_list = load_ground_truth('/targeted_attack/dataset/images.csv')
+image_id_list, label_ori_list, label_tar_list = load_ground_truth('/home/hancy/dataset/img1k/images.csv')
 
 img_size = 299
-input_path = '/targeted_attack/dataset/images/'
+input_path = '/home/hancy/dataset/img1k/images/'
 lr = 2 / 255  # step size
 epsilon = 16  # L_inf norm bound
-num_batches = np.int(np.ceil(len(image_id_list) / arg.batch_size))
+num_batches = int(np.ceil(len(image_id_list) / arg.batch_size))
 
 logging("loaded the images".format())
 n = tdist.Normal(0.0, 15/255)
