@@ -1,6 +1,12 @@
 import torch
+from PIL import Image
+
+device = 'cuda' if torch.cuda.is_available() else 'cpu'
+
+from attacks import *
 
 def rap_attack():
+    
     for k in range(0, num_batches):
         batch_size_cur = min(arg.batch_size, len(image_id_list) - k * arg.batch_size)
         X_ori = torch.zeros(batch_size_cur, 3, img_size, img_size).to(device)

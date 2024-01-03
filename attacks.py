@@ -66,6 +66,12 @@ def pgd(model, data, labels, targeted, epsilon, k, a, loss_func='CE', random_sta
             perturbed_data.data = torch.max(torch.min(perturbed_data.data, data_max), data_min)
     return perturbed_data.detach()
 
+## define MI
+def MI(X_in):
+    return None
+
+
+
 ##define TI
 def TI(X_in):
     def gkern(kernlen=15, nsig=3):
@@ -85,7 +91,6 @@ def TI(X_in):
 def DI(X_in):
     rnd = np.random.randint(299, 330, size=1)[0]
     h_rem = 330 - rnd
-    w_rem = 330 - rnd
     pad_top = np.random.randint(0, h_rem, size=1)[0]
     pad_bottom = h_rem - pad_top
     pad_left = np.random.randint(0, w_rem, size=1)[0]
@@ -97,3 +102,7 @@ def DI(X_in):
         return X_out
     else:
         return X_in
+    
+
+def SI(X_in):
+    return None

@@ -6,7 +6,6 @@ import torch.autograd as autograd
 import torchvision
 import torchvision.datasets as td
 import torch.distributions as tdist
-from utils import *
 from torchvision import models, transforms
 from PIL import Image
 import csv
@@ -14,6 +13,7 @@ import numpy as np
 import os
 import scipy.stats as st
 
+from utils import *
 
 arg = get_args()
 
