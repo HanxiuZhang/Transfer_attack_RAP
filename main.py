@@ -104,7 +104,6 @@ torch.backends.cudnn.deterministic = True
 np.random.seed(arg.seed)
 
 
-
 # values are standard normalization for ImageNet images,
 # from https://github.com/pytorch/examples/blob/master/imagenet/main.py
 
@@ -121,60 +120,7 @@ logging("loaded the images".format())
 n = tdist.Normal(0.0, 15/255)
 
 #-------------------------------------#
-X_adv_10 = torch.zeros(len(image_id_list), 3, img_size, img_size)
-X_adv_50 = torch.zeros(len(image_id_list), 3, img_size, img_size)
-X_adv_100 = torch.zeros(len(image_id_list), 3, img_size, img_size)
-X_adv_200 = torch.zeros(len(image_id_list), 3, img_size, img_size)
-X_adv_300 = torch.zeros(len(image_id_list), 3, img_size, img_size)
-X_adv_400 = torch.zeros(len(image_id_list), 3, img_size, img_size)
 
-fixing_point = 0
-
-adv_activate = 0
-
-pos = np.zeros((4, arg.max_iterations // 10))
-
-
-
-
-torch.cuda.empty_cache()
-
-
-logging(arg.file_path.format())
-
-logging('Hyper-parameters: {}\n'.format(arg.__dict__))
-
-
-logging("final result")
-logging('Source model : Ensemble --> Target model: Inception-v3 | ResNet50 | DenseNet121 | VGG16bn')
-logging(str(pos))
-
-logging("results for 10 iters:")
-logging(str(pos[:, 0]))
-
-logging("results for 100 iters:")
-logging(str(pos[:, 9]))
-
-logging("results for 200 iters:")
-logging(str(pos[:, 19]))
-
-logging("results for 300 iters:")
-logging(str(pos[:, 29]))
-
-# logging("results for 400 iters:")
-# logging(str(pos[:, 39]))
-
-
-if arg.save:
-    np.save(arg.file_path+'/'+'results'+'.npy', pos)
-
-    X_adv_400 = X_adv_400.detach().cpu()
-
-    logging("saving the adversarial examples")
-    
-    np.save(arg.file_path+'/'+'iter_400'+'.npy', X_adv_400.numpy())
-
-    logging("finishing saving the adversarial examples")
 
 logging("finishing the attack experiment")
 logging(50*"#")
